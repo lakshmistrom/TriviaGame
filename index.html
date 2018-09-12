@@ -18,15 +18,25 @@
 </head>
 
 <body>
+
     <div class="container">
-        <h1>Totally Trivial Trivia</h1>
-        <button class="btn btn-outline-dark">Start</button>
-        <p><strong>Time Remaining:</strong> 7 seconds</p>
-        <div class="row">
+        <div class="row justify-content-end py-5">
+            <div class="col">
+                <h1>Totally Trivial Trivia</h1>
+            </div>
+            <div class="col text-right">
+                <button id="startBtn" class="btn btn-outline-dark">Start</button>
+            </div>
+        </div>
+        
+        
+        
+        <div id="game" class="row invisible">
             <div class="col-sm-6">
                 <img class="img-fluid" src="assets/images/characterlogo_big.png" />
             </div>
             <div class="col-sm-6">
+                <p><strong>Time Remaining:</strong> 7 seconds</p>
                 <div class="card">
                     <div class="card-header bg-dark text-white">
                         <h5>Category <i class="fas fa-angle-right fa-fw"></i> <span id="category"></span></h5>
@@ -42,7 +52,7 @@
                     <ul id="question-options" class="list-group list-group-flush text-right">
                     </ul>
                 </div>
-
+                
 
             </div>
         </div>
