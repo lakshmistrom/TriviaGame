@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <div class="row justify-content-end py-5">
             <div class="col">
@@ -33,27 +32,46 @@
                 <img class="img-fluid" src="assets/images/characterlogo_big.png" />
             </div>
             <div class="col-sm-6">
-                <p><strong>Time Remaining: </strong><span id="countDown"></span> seconds</p>
-                <div class="card">
-                    <div class="card-header bg-dark text-white">
-                        <h5>Category <i class="fas fa-angle-right fa-fw"></i> <span id="category"></span></h5>
+                <div id="timerAndQuestion">
+                    <p><strong>Time Remaining: </strong><span id="countDown"></span> seconds</p>
+                    <div class="card">
+                        <div class="card-header bg-dark text-white">
+                            <h5>Category <i class="fas fa-angle-right fa-fw"></i> <span id="category"></span></h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- <h5 class="card-title">Card title</h5> -->
+                            <p><strong>Q : </strong><span id="question" class="card-text"></p>
+                            </p>
+                            <!-- <a href="#" class="btn btn-primary">Button</a> -->
+                        </div>
+                        <!-- loads questions -->
+                        <ul id="question-options" class="list-group list-group-flush text-right">
+                        </ul>
                     </div>
-                    <div class="card-body">
-                        <!-- <h5 class="card-title">Card title</h5> -->
-                        <p><strong>Q : </strong><span id="question" class="card-text"></p>
-                        </p>
-
-                        <!-- <a href="#" class="btn btn-primary">Button</a> -->
-                    </div>
-                    <!-- loads questions -->
-                    <ul id="question-options" class="list-group list-group-flush text-right">
-                    </ul>
                 </div>
-                
-
+                <div id="overallResults" class="invisible">
+                    <div class="card">
+                        <div class="card-body">
+                            <p><strong>All done! Here is how you did!</strong></p>
+                            <p>
+                                <strong>Correct Answers: </strong>
+                                <span id="countCorrectAnswers"></span>
+                            </p>
+                            <p>
+                                <strong>Incorrect Answers: </strong>
+                                <span id="countIncorrectAnswers"></span>
+                            </p>
+                            <p>
+                                <strong>Unanswered Answers: </strong>
+                                <span id="countUnansweredAnswers"></span>
+                            </p>
+                            <button id="startOver" class="btn btn-outline-dark">Start Over</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </body>
 <!-- minified jquery to have ajax work -->

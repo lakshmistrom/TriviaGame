@@ -11,11 +11,23 @@ var category;
 //question
 var question;
 
+//question count
+var countQuestion = 0;
+
 //correct answer
 var correctAnswer;
 
+//correct count
+var countRightAnswers = 0;
+
 //wrong answers
 var wrongAnswers;
+
+//wrong count
+var countWrongAnswers = 0;
+
+//unanswered count
+var countUnansweredAnswers = 0;
 
 //list of answers
 var answers = [];
@@ -102,6 +114,16 @@ function getQuestion() {
 
                 //delaying showing the answer to the user and initialize the game again
                 setTimeout(initGame, 2000);
+
+                //keep track of every correctly answered question
+                countRightAnswers++;
+
+                //keep track of number of questions answered
+                countQuestion++;
+
+                //update the html with number of right answers
+                $("#countCorrectAnswers").text(countRightAnswers);
+                console.log("right answer: " + countRightAnswers);
             } else {
                 //let the user know they chose the wrong answer
                 //show the right and wrong answers
@@ -112,6 +134,16 @@ function getQuestion() {
 
                 //delaying showing the answer to the user and initialize the game again
                 setTimeout(initGame, 2000);
+
+                //keep track of every uncorrectly answered question
+                countWrongAnswers++;
+
+                //keep track of number of questions answered
+                countQuestion++;
+
+                //update the html with number of wrong answers
+                $("#countIncorrectAnswers").text(countWrongAnswers);
+                console.log("wrong answer: " + countWrongAnswers);
             }
         });
     });
@@ -168,6 +200,16 @@ var countdown = {
 
             //delaying showing the answer to the user and initialize the game again
             setTimeout(initGame, 2000);
+
+            //keep track of the unanswered questions
+            countUnansweredAnswers++;
+
+            //keep track of number of questions answered
+            countQuestion++;
+
+            //update html with number of unanswered questions
+            $("#countUnansweredAnswers").text(countUnansweredAnswers);
+            console.log("unaswered: " + countUnansweredAnswers);
         }
     }
 };
@@ -186,9 +228,45 @@ function initGame() {
         $("#game").removeClass("invisible");
         $("#startBtn").addClass("invisible");
 
-        //handles countdown
-        countdown.reset();
-        countdown.start();
+        //if number of questions has reached 8 display that you are done
+        if (countQuestion === 8) {
+            //show results
+            $("#overallResults").removeClass("invisible");
+
+            //hide questions
+            $("#timerAndQuestion").addClass("d-none");
+
+            //remove click handler
+            $("#startOver").off("click");
+
+            //starover
+            $("#startOver").click(function () {
+                //reset count question
+                countQuestion = 0;
+
+                //reset right answer count
+                countRightAnswers = 0;
+
+                //reset wrong answer count
+                countWrongAnswers = 0;
+
+                //reset unanswered answers
+                countUnansweredAnswers = 0;
+
+                //hide results
+                $("#overallResults").addClass("invisible");
+
+                //unhide questions
+                $("#timerAndQuestion").removeClass("d-none");
+
+                //start the game again
+                initGame();
+            });
+        } else {
+            //handles countdown
+            countdown.reset();
+            countdown.start();
+        }
     });
 }
 //displays the wrong and right answers
